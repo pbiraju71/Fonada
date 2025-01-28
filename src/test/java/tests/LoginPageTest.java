@@ -36,7 +36,7 @@ import utils.CommonUtilities;
 
 public class LoginPageTest extends Base {
 
-	WebDriver driver;
+	public WebDriver driver;
 	Properties prop;
 	LandingPage landingPage;
 	LoginPage loginPage;

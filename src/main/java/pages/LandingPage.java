@@ -30,5 +30,8 @@ public class LandingPage extends RootPage{
 	public void clickOnMyAccount() {
 		myAccountOption.click();
 	}
-	
+	public LoginPage navigateToLoginPage() {
+		clickOnMyAccount();
+		return selectLoginOption();
+	}
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +20,7 @@ public class RightColumnOptions extends RootPage{
 	@FindBy(xpath="//aside[@id='column-right']//a[text()='Register']")
 	private WebElement registerOption;
 	
-	@FindBy(xpath="//a[@class='list-group-item'][text()='Logout']")
+	@FindBy(xpath="//aside[@id='column-right']//a[text()='Logout']")
 	private WebElement logoutOption;
 	
 	@FindBy(xpath="//a[@class='list-group-item'][text()='Login']")
@@ -125,6 +126,20 @@ public class RightColumnOptions extends RootPage{
 	public RegisterPage clickOnRegisterOption() {
 		elementUtilities.clickOnElement(registerOption);
 		return new RegisterPage(driver);
+	}
+	public AccountLogOutPage clickOnRightSideLogoutOption() {
+		logoutOption.click();
+		return new AccountLogOutPage(driver);
+	}
+	
+	public boolean isLogoutOptionAvailableAtRightColumnOptions() {
+		boolean b = false;
+		try {
+			b = logoutOption.isDisplayed();
+		}catch(NoSuchElementException e) {
+			b=false;
+		}
+		return b;
 	}
 
 }

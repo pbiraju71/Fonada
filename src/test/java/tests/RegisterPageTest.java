@@ -53,7 +53,7 @@ import utils.CommonUtilities;
 
 public class RegisterPageTest extends Base {
 
-	WebDriver driver;
+	public WebDriver driver;
 	AccountPage accountPage;
 	MyAccountPage myAccountPage;
 	MyAccountInformationPage myAccountInformationPage;

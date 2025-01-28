@@ -84,8 +84,9 @@ public class Base {
 		}
 	}
 
-	public void refreshPage(WebDriver driver) {
-		driver.navigate().refresh();
+	public WebDriver refreshPage(WebDriver driver) {
+		 driver.navigate().refresh();
+		 return driver;
 	}
 
 	public Actions getActions(WebDriver driver) {

@@ -16,6 +16,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.ExtentSparkReporterConfig;
+
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
@@ -90,13 +94,13 @@ public class CommonUtilities {
 		BufferedImage ActualImage = null;
 		BufferedImage ExpectedImage = null;
 		try {
-			 ActualImage = ImageIO.read(new File(actualImagePath));
-			 ExpectedImage = ImageIO.read(new File(expectedImagePath));
+			ActualImage = ImageIO.read(new File(actualImagePath));
+			ExpectedImage = ImageIO.read(new File(expectedImagePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		ImageDiffer imgDiffer = new ImageDiffer();
-		 ImageDiff imgDifference = imgDiffer.makeDiff(ExpectedImage,ActualImage);
+		ImageDiff imgDifference = imgDiffer.makeDiff(ExpectedImage, ActualImage);
 		return imgDifference.hasDiff();
 	}
 
@@ -121,4 +125,33 @@ public class CommonUtilities {
 		int index = random.nextInt(validEmails.length);
 		return validEmails[index];
 	}
-}
+
+	public static ExtentReports getExtentReport() {
+		ExtentReports extentReport = new ExtentReports();
+		File extentReportFile = new File(System.getProperty("user.dir") + "\\reports\\TNExtentReport.html");
+		ExtentSparkReporter sparkReporter = new ExtentSparkReporter(extentReportFile);
+		ExtentSparkReporterConfig sparkConfig = sparkReporter.config();
+		sparkConfig.setReportName("Tutorials Ninja Test Automation Results");
+		sparkConfig.setDocumentTitle("TNER Results");
+
+		extentReport.attachReporter(sparkReporter);
+		extentReport.setSystemInfo("OS", System.getProperty("os.name"));
+		extentReport.setSystemInfo("Java Version", System.getProperty("java.version"));
+		extentReport.setSystemInfo("username", System.getProperty("user.name"));
+		extentReport.setSystemInfo("Selenium WebDriver Version", "4.27.0");
+		return extentReport;
+	}
+
+	public static String takeScreenshotAndReturnPath(WebDriver driver, String pathToBeCopied) {
+
+		TakesScreenshot ts = (TakesScreenshot) driver;
+
+		File srcScreenshot = ts.getScreenshotAs(OutputType.FILE);
+        String destScreenShotPath = System.getProperty("user.dir")+pathToBeCopied;
+		try {
+			FileHandler.copy(srcScreenshot, new File(destScreenShotPath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return destScreenShotPath;
+}}

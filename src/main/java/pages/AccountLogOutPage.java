@@ -19,15 +19,36 @@ public class AccountLogOutPage extends RootPage {
 
 	@FindBy(xpath = "//a[@title='My Account']")
 	private WebElement myAccountOption;
+	
 	@FindBy(linkText = "Login")
 	private WebElement loginOption;
 
+	@FindBy(xpath = "//ul[@class='breadcrumb']//a[text()='Logout']")
+	private WebElement logoutBreadCrumb;
+	
+	@FindBy(xpath = "//a[@class='btn btn-primary'][text()='Continue']")
+	private WebElement continueButton;
+	
+	@FindBy(xpath = "//h1[text()='Account Logout']")
+	private WebElement accountLogoutPageHeader;
+	
+	public boolean didWeNavigateToAccountLogoutPage() {
+		return logoutBreadCrumb.isDisplayed();
+	}
 	public LoginPage clickOnLoginOption() {
 		loginOption.click();
 		return new LoginPage(driver);
+	}
+	public LandingPage clickOnContinueButton() {
+		continueButton.click();
+		return new LandingPage(driver);
 	}
 
 	public void clickOnMyAccountOption() {
 		myAccountOption.click();
 	}
+	public String getPageHeading() {
+		return accountLogoutPageHeader.getText();
+	}
+	
 }
