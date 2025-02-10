@@ -48,6 +48,18 @@ public class HeaderOptions extends RootPage {
 	@FindBy(xpath = "//i[@class='fa fa-search']")
 	private WebElement searchOption;
 
+	@FindBy(xpath = "//button[@class='btn btn-default btn-lg']//i")
+	private WebElement searchBtn;
+
+	@FindBy(xpath = "//*[text()='Products meeting the search criteria']/following-sibling::p[1]")
+	private WebElement searchResultText;
+
+	@FindBy(linkText = "HP LP3065")
+	private WebElement existingProduct;
+
+	@FindBy(name = "search")
+	private WebElement searchTextBox;
+
 	@FindBy(xpath = "//span[text()='My Account']")
 	private WebElement myAccountDropMenu;
 
@@ -59,6 +71,27 @@ public class HeaderOptions extends RootPage {
 
 	@FindBy(xpath = "//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//a[text()='Logout']")
 	private WebElement logoutOption;
+
+	public void enterProductNameIntoSearchTextBox(String ProductNameToSearch) {
+		elementUtilities.clearTextFromElement(searchTextBox);
+		elementUtilities.enterTextIntoElement(searchTextBox, ProductNameToSearch);
+	}
+
+	public String getPlaceHolderTextOfSearchBoxField() {
+		String searchBoxFieldPlaceHolderText = null;
+		try {
+			searchBoxFieldPlaceHolderText=searchTextBox.getDomAttribute("placeholder");
+		} catch (NoSuchElementException e) {
+			searchBoxFieldPlaceHolderText = null;
+		}
+		return searchBoxFieldPlaceHolderText;
+
+	}
+
+	public SearchPage clickOnSearchButton() {
+		elementUtilities.clickOnElement(searchBtn);
+		return new SearchPage(driver);
+	}
 
 	public AccountLogOutPage clickOnLogoutOption() {
 		logoutOption.click();
@@ -122,19 +155,17 @@ public class HeaderOptions extends RootPage {
 		return loginOption.isDisplayed();
 	}
 
-		
 	public boolean isLogoutOptionAvailableUnderMyAccountDropMenu() {
-	    try {
-	        // Wait for the element to be present and visible
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        WebElement logoutOption = wait.until(ExpectedConditions.visibilityOfElementLocated(
-	            By.xpath("//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//a[text()='Logout']")));
-	        return logoutOption.isDisplayed();
-	    } catch (TimeoutException | NoSuchElementException e) {
-	        // Element is not present or not visible
-	        return false;
-	    }
+		try {
+			// Wait for the element to be present and visible
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement logoutOption = wait.until(ExpectedConditions.visibilityOfElementLocated(
+					By.xpath("//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//a[text()='Logout']")));
+			return logoutOption.isDisplayed();
+		} catch (TimeoutException | NoSuchElementException e) {
+			// Element is not present or not visible
+			return false;
+		}
 	}
-
 
 }

@@ -156,23 +156,23 @@ public class RegisterPage extends RootPage {
 	}
 
 	public boolean isFirstNameWarningMessageDisplayed() {
-		return elementUtilities.isElementDisplayed(firstNameWarning);
+		return elementUtilities.isElementDisplayedOnPage(firstNameWarning);
 	}
 
 	public boolean isLastNameWarningMessageDisplayed() {
-		return elementUtilities.isElementDisplayed(lastNameWarning);
+		return elementUtilities.isElementDisplayedOnPage(lastNameWarning);
 	}
 
 	public boolean isEmailWarningMessageDisplayed() {
-		return elementUtilities.isElementDisplayed(emailWarning);
+		return elementUtilities.isElementDisplayedOnPage(emailWarning);
 	}
 
 	public boolean isTelephoneWarningMessageDisplayed() {
-		return elementUtilities.isElementDisplayed(telephoneWarning);
+		return elementUtilities.isElementDisplayedOnPage(telephoneWarning);
 	}
 
 	public boolean isPasswordWarningMessageDisplayed() {
-		return elementUtilities.isElementDisplayed(passwordWarning);
+		return elementUtilities.isElementDisplayedOnPage(passwordWarning);
 	}
 
 	public String getEmailValidationMessage() {
@@ -204,7 +204,7 @@ public class RegisterPage extends RootPage {
 	}
 
 	public boolean didWeNavigateToRegisterPage() {
-		return elementUtilities.isElementDisplayed(registerPageBreadcrumb);
+		return elementUtilities.isElementDisplayedOnPage(registerPageBreadcrumb);
 	}
 
 	public RegisterPage selectRegisterBreadcrumbOption() {

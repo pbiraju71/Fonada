@@ -34,7 +34,7 @@ public class NewsletterPage extends RootPage {
 	}
 	
 	public boolean didWeNavigateToNewsletterPage() {
-		return elementUtilities.isElementDisplayed(newsletterPageBreadcrumb);
+		return elementUtilities.isElementDisplayedOnPage(newsletterPageBreadcrumb);
 	}
 
 }

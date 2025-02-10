@@ -39,10 +39,11 @@ public class AccountSuccessPage extends RootPage {
 	}
 
 	public boolean didWeNavigateToAccountSuccessPage() {
-		return elementUtilities.isElementDisplayed(accountSuccessPageBreadcrumb);
+		
+		return elementUtilities.isElementDisplayedOnPage(accountSuccessPageBreadcrumb);
 	}
 
 	public boolean isUserLoggedIn() {
-		return elementUtilities.isElementDisplayed(logoutOption);
+		return elementUtilities.isElementDisplayedOnPage(logoutOption);
 	}
 }

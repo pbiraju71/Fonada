@@ -23,6 +23,22 @@ public class LandingPage extends RootPage{
 	@FindBy(linkText = "Login")
 	private WebElement loginOption;
 	
+	@FindBy(name = "search")
+	private WebElement searchTextBox;
+
+	@FindBy(xpath = "//button[@class='btn btn-default btn-lg']//i")
+	private WebElement searchBtn;
+
+	public void enterProductNameIntoSearchTextBox(String ProductNameToSearch) {
+		elementUtilities.clearTextFromElement(searchTextBox);
+		elementUtilities.enterTextIntoElement(searchTextBox, ProductNameToSearch);
+	}
+
+	public SearchPage clickOnSearchButton() {
+		elementUtilities.clickOnElement(searchBtn);
+		return new SearchPage(driver);
+	}
+	
 	public LoginPage selectLoginOption() {
 		loginOption.click();
 		return new LoginPage(driver);

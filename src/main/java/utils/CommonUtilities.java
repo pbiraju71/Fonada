@@ -31,8 +31,7 @@ public class CommonUtilities {
 
 		try (FileInputStream fis = new FileInputStream(filePath)) {
 			prop.load(fis);
-			System.out.println("Properties file loaded successfully from: {}");
-		} catch (IOException e) {
+			} catch (IOException e) {
 			System.out.println("Error loading properties file from: {}");
 		}
 

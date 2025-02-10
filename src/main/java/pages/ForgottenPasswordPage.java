@@ -21,6 +21,6 @@ public class ForgottenPasswordPage extends RootPage{
 	private WebElement Forgotten_Password_Bread_Crumb;
 	
 	public boolean didWeNavigateToForgettenPasswordPage() {
-		return elementUtilities.isElementDisplayed(Forgotten_Password_Bread_Crumb);
+		return elementUtilities.isElementDisplayedOnPage(Forgotten_Password_Bread_Crumb);
 	}
 }

@@ -141,7 +141,7 @@ public class LoginPage extends RootPage {
 	}
 
 	public boolean didWeNavigateToLogin() {
-		return elementUtilities.isElementDisplayed(loginBreadcrumb);
+		return elementUtilities.isElementDisplayedOnPage(loginBreadcrumb);
 	}
 
 	public boolean isProperBreadCrumbDisplayed() {

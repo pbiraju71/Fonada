@@ -120,7 +120,7 @@ public class RightColumnOptions extends RootPage{
 	}
 	
 	public boolean didWeGetLoggedIn() {
-		return elementUtilities.isElementDisplayed(logoutOption);
+		return elementUtilities.isElementDisplayedOnPage(logoutOption);
 	}
 	
 	public RegisterPage clickOnRegisterOption() {

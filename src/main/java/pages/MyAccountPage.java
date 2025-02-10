@@ -27,7 +27,7 @@ public class MyAccountPage extends RootPage{
 	}
 	
 	public boolean didWeNavigateToMyAccountPage() {
-		return elementUtilities.isElementDisplayed(editYourAccountInformationOption);
+		return elementUtilities.isElementDisplayedOnPage(editYourAccountInformationOption);
 	}
 	
 	public MyAccountInformationPage clickOnEditYourAccountInformationOption() {
