@@ -30,8 +30,7 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.10.2</version>
-			<scope>test</scope>
-		</dependency>
+			</dependency>
 		<!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
