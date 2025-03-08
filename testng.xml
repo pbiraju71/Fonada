@@ -8,6 +8,8 @@
     <classes>
       <class name="tests.RegisterPageTest"/>
       <class name="tests.LoginPageTest"/>
+      <class name="tests.LogoutPageTest"/>
+      <class name="tests.SearchPageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
